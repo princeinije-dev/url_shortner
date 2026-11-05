@@ -1,0 +1,63 @@
+
+<%- include("partials/head", { title }) %>
+
+<header class="navbar">
+    <a href="/" class="logo">Linkly<span>.</span></a>
+
+    <button id="logoutBtn" class="btn btn-secondary">
+        Logout
+    </button>
+</header>
+
+<main class="dashboard">
+    <section class="dashboard-heading">
+        <div>
+            <span class="eyebrow">YOUR WORKSPACE</span>
+            <h1>Link dashboard</h1>
+            <p>Manage and track your shortened links.</p>
+        </div>
+    </section>
+
+    <section class="stats-grid">
+        <div class="stat-card">
+            <p>Total links</p>
+            <h2 id="totalLinks">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Total clicks</p>
+            <h2 id="totalClicks">0</h2>
+        </div>
+    </section>
+
+    <section class="create-card">
+        <h2>Create a short link</h2>
+
+        <form id="createUrlForm">
+            <input
+                type="url"
+                id="originalUrl"
+                placeholder="https://example.com/your-long-url"
+                required
+            >
+
+            <button type="submit" class="btn btn-primary">
+                Shorten URL
+            </button>
+        </form>
+
+        <p id="message"></p>
+    </section>
+
+    <section class="links-section">
+        <h2>Your links</h2>
+
+        <div id="linksContainer">
+            <p>Loading your links...</p>
+        </div>
+    </section>
+</main>
+
+<script src="/js/dashboard.js"></script>
+</body>
+</html>
