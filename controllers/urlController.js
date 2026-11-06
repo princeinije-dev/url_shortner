@@ -9,6 +9,16 @@ import {
 
 import { randomBytes } from "node:crypto";
 
+const isValidUrl = (value) => {
+    try {
+        const url = new URL(value);
+
+        return ["http:", "https:"].includes(url.protocol);
+    } catch {
+        return false;
+    }
+};
+
 const createUrl = async (req, res) => {
     try {
         const { originalUrl } = req.body;
@@ -18,6 +28,9 @@ const createUrl = async (req, res) => {
             return res.status(400).json({
                 message: "Original URL is required"
             });
+        }
+        if (!isValidUrl(originalUrl)) {
+            return res.status(400).json({message: "Please provide a valid HTTP or HTTPS URL"})
         }
 
         const shortCode = randomBytes(4).toString("hex");
